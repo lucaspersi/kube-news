@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: appreplicaset
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appweb
+  template:
+    metadata:
+      name: appweb
+      labels:
+        app: appweb
+    spec:
+      containers:
+        - name: appweb
+          image: fabricioveronez/web-page:blue
+          ports:
+            - containerPort: 80
